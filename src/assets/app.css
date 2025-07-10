@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+/* +++++ NUEVO: utilidades de borde de texto +++++ */
+@layer utilities {
+  .text-outline {
+    /* Navegadores con -webkit-text-stroke */
+    -webkit-text-stroke: 1px #000000;
+
+    /* Fallback universal mediante múltiples sombras */
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
+      1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  }
+}
+
+/* ---------- utilidades personalizadas ---------- */
+@layer utilities {
+  /* contorno ya creado: .text-outline { … } */
+
+  /* sombra suave para subtítulos y texto pequeño */
+  .drop-shadow-legible {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  }
+}

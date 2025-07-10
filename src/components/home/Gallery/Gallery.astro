@@ -1,0 +1,37 @@
+---
+import GallerySection, { type GalleryItem } from "./Gallery.tsx";
+
+const gallery: GalleryItem[] = [
+  {
+    mediaSrc: "/galeria/pet-antes-despues.png",
+    alt: "Antes y después de corte",
+    caption: "Transformación Premium",
+    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia.",
+    link: "/galeria/peluqueria-transformacion",
+  },
+  {
+    mediaSrc: "/media/vet.mp4",
+    isVideo: true,
+    alt: "Chequéo clínico",
+    caption: "Chequéo Preventivo",
+    description: "Detección temprana con ecógrafo portátil y análisis de sangre exprés.",
+    link: "/galeria/chequeo-preventivo",
+  },
+  {
+    mediaSrc: "/galeria/pet-antes-despues.png",
+    alt: "Antes y después de corte",
+    caption: "Transformación Premium",
+    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia.",
+    link: "/galeria/peluqueria-transformacion",
+  },
+  {
+    mediaSrc: "/galeria/pet-antes-despues.png",
+    alt: "Antes y después de corte",
+    caption: "Transformación Premium",
+    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia.",
+    link: "/galeria/peluqueria-transformacion",
+  },
+  // …más ítems
+];
+---
+    <GallerySection client:visible items={gallery} heading="Resultados que Enamoran" />;

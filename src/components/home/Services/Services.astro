@@ -1,0 +1,35 @@
+---
+import ServicesSection, { type Service } from "./Services.tsx";
+
+const services: Service[] = [
+  {
+    title: "Peluquería",
+    description: "Cortes higiénicos, baño con productos hipoalergénicos y estilizado.",
+    slug: "/servicios/peluqueria",
+    mediaSrc: "/media/pet-grooming.mp4",
+    isVideo: true,
+  },
+  {
+    title: "Vacunas",
+    description: "Plan de vacunación completo para tu mascota, sin dolor y con registro digital.",
+    slug: "/servicios/vacunas",
+    mediaSrc: "/images/vacuna.png",
+  },
+  {
+    title: "Consulta Veterinaria",
+    description: "Exámenes clínicos integrales con historial médico en línea.",
+    slug: "/servicios/consulta",
+    mediaSrc: "/media/vet.mp4",
+    isVideo: true,
+  },
+  {
+    title: "Laboratorio",
+    description: "Análisis de sangre, orina y pruebas especializadas con resultados rápidos.",
+    slug: "/servicios/laboratorio",
+    mediaSrc: "/media/lab.mp4",
+    isVideo: true,
+  },
+];
+---
+
+<ServicesSection services={services}  client:load/>
