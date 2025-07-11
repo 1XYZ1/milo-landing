@@ -1,0 +1,13 @@
+---
+// src/pages/index.astro
+import LocationMapLeaflet from "./Location.tsx";
+---
+
+<LocationMapLeaflet
+  client:visible
+  address="Mario Alvo Hassan 1489, Santiago, Región Metropolitana"
+  lat={-33.46788}
+  lon={-70.64249}
+  googleMapsUrl="https://www.google.com/maps/dir/?api=1&destination=-33.46788,-70.64249"
+  wazeUrl="https://waze.com/ul?ll=-33.46788,-70.64249&navigate=yes"
+/>

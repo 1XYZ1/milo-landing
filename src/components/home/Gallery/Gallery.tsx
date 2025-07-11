@@ -30,8 +30,9 @@ const GallerySection: Component<GallerySectionProps> = (props) => {
     () => ({
       align: "start",
       loop: true,
+      slidesToScroll: 1,
       breakpoints: {
-        1024: { align: "start", slidesToScroll: 1 } as any,
+        1024: { slidesToScroll: 1 },
       },
     }),
     () => [Autoplay({ delay: 1800, stopOnInteraction: false })]
@@ -55,38 +56,43 @@ const GallerySection: Component<GallerySectionProps> = (props) => {
         {/* Embla viewport */}
         <div class="embla overflow-hidden" ref={emblaRef}>
           {/* Embla container */}
-          <div class="embla__container flex gap-6">
+          <div class="embla__container flex">
             {props.items.map((item) => (
-              <figure class="embla__slide min-w-full lg:min-w-[33%] relative rounded-box overflow-hidden shadow-lg">
-                {item.isVideo ? (
-                  <video
-                    src={item.mediaSrc}
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    class="w-full h-60 lg:h-64 object-cover"
-                  ></video>
-                ) : (
-                  <img
-                    src={item.mediaSrc}
-                    alt={item.alt}
-                    loading="lazy"
-                    class="w-full h-60 lg:h-64 object-cover"
-                  />
-                )}
-                <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-base-100 space-y-2">
-                  <h3 class="font-semibold text-lg lg:text-xl">
-                    {item.caption}
-                  </h3>
-                  <p class="text-sm lg:text-base line-clamp-2">
-                    {item.description}
-                  </p>
-                  <a href={item.link} class="btn btn-primary btn-sm lg:btn-md">
-                    Ver detalle
-                  </a>
-                </figcaption>
-              </figure>
+              <div class="embla__slide min-w-full lg:min-w-[33%] pr-6">
+                <figure class="relative rounded-box overflow-hidden shadow-lg">
+                  {item.isVideo ? (
+                    <video
+                      src={item.mediaSrc}
+                      autoplay
+                      muted
+                      loop
+                      playsinline
+                      class="w-full h-60 lg:h-64 object-cover"
+                    ></video>
+                  ) : (
+                    <img
+                      src={item.mediaSrc}
+                      alt={item.alt}
+                      loading="lazy"
+                      class="w-full h-60 lg:h-64 object-cover"
+                    />
+                  )}
+                  <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-base-100 space-y-2">
+                    <h3 class="font-semibold text-lg lg:text-xl">
+                      {item.caption}
+                    </h3>
+                    <p class="text-sm lg:text-base line-clamp-2">
+                      {item.description}
+                    </p>
+                    <a
+                      href={item.link}
+                      class="btn btn-primary btn-sm lg:btn-md"
+                    >
+                      Ver detalle
+                    </a>
+                  </figcaption>
+                </figure>
+              </div>
             ))}
           </div>
         </div>

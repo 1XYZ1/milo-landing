@@ -1,0 +1,79 @@
+---
+import ReviewSection, { type Review } from "./Review.tsx";
+
+const reviews: Review[] = [
+  {
+    author: "Constanza Sarmiento",
+    media: [
+      {
+        src: "/clientes/cliente1.webp",
+        alt: "Constanza Sarmiento",
+      },
+      {
+        src: "/clientes/cliente1.webp",
+        alt: "Constanza Sarmiento",
+      },
+    ],
+    rating: 5,
+    date: "Hace un año",
+    text: "Súper recomendable, yo tengo un Pomerania que tiene su carácter, ahí lo respetan y lo tratan con mucho amor, nunca he tenido ni un problema cuando ha vuelto de casa y antes Cody llegaba súper decaído y enfermo, ahora llegas feliz! Gracias por poder confiarles a mi bebé. 🫶🏻",
+
+  },
+  {
+    author: "Carlos G.",
+      media: [
+      {
+        src: "/avatars/carlos.jpg",
+        alt: "Carlos G.",
+      },
+    ],
+    rating: 5,
+    date: "May 2025",
+    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+  },
+  {
+    author: "Carlos G.",
+      media: [
+      {
+        src: "/avatars/carlos.jpg",
+        alt: "Carlos G.",
+      },
+    ],
+    rating: 5,
+    date: "May 2025",
+    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+  },
+  {
+    author: "Carlos G.",
+      media: [
+      {
+        src: "/avatars/carlos.jpg",
+        alt: "Carlos G.",
+      },
+    ],
+    rating: 5,
+    date: "May 2025",
+    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+  },
+  {
+    author: "Carlos G.",
+      media: [
+      {
+        src: "/avatars/carlos.jpg",
+        alt: "Carlos G.",
+      },
+    ],
+    rating: 5,
+    date: "May 2025",
+    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+  },
+  // ...más reseñas
+];
+---
+<ReviewSection
+  overallRating={4.9}
+  totalReviews={315}
+  placeUrl="https://g.co/kgs/Bb5YGJM"
+  reviews={reviews}
+  client:visible
+/>

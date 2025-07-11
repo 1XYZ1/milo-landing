@@ -2,16 +2,26 @@
 @plugin "daisyui" {
   themes: light --default;
 }
+@import "leaflet/dist/leaflet.css";
 
-/* +++++ NUEVO: utilidades de borde de texto +++++ */
+/* +++++ MEJORAS: utilidades de texto +++++ */
 @layer utilities {
-  .text-outline {
-    /* Navegadores con -webkit-text-stroke */
-    -webkit-text-stroke: 1px #000000;
+  /* Versión mejorada del text-outline - más sutil */
+  .text-outline-soft {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.5),
+      0 0 8px rgba(0, 0, 0, 0.3);
+  }
 
-    /* Fallback universal mediante múltiples sombras */
-    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
-      1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  /* Para efectos de profundidad */
+  .text-depth {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8), 0 2px 3px rgba(0, 0, 0, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Para efectos de glow */
+  .text-glow {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor,
+      0 0 20px currentColor, 0 2px 4px rgba(0, 0, 0, 0.8);
   }
 }
 

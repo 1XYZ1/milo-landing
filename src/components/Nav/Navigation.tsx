@@ -1,6 +1,5 @@
 // ResponsiveNavbar.tsx – SolidJS + TailwindCSS + daisyUI
-// Corrección: el botón hamburguesa ahora ABRE y CIERRA el menú según su estado,
-// y el overlay sigue cerrándolo al tocar fuera.
+// Versión mejorada para móvil con mejor uso del espacio
 import type { Component } from "solid-js";
 
 interface NavLink {
@@ -93,26 +92,59 @@ const ResponsiveNavbar: Component<{ children?: any }> = (props) => {
         </main>
       </div>
 
-      {/* ——— Drawer (mobile) ——— */}
+      {/* ——— Drawer (mobile) - MEJORADO ——— */}
       <div class="drawer-side fixed inset-0">
         {/* Overlay */}
         <label for="nav-drawer" class="drawer-overlay"></label>
 
-        {/* Panel */}
-        <aside class="bg-base-100 w-72 h-full p-6 space-y-6 overflow-y-auto">
-          <h2 class="text-2xl font-semibold">Menú</h2>
-          <ul class="flex flex-col text-lg gap-4">
-            {links.map((l) => (
-              <li>
-                <a href={l.href} onClick={close}>
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a href="#book" class="btn btn-accent mt-6" onClick={close}>
-            Reservar
-          </a>
+        {/* Panel mejorado */}
+        <aside class="bg-base-100 w-80 h-full flex flex-col shadow-2xl">
+          {/* Header del drawer */}
+          <div class="p-6 border-b border-base-200">
+            <h2 class="text-2xl font-bold text-base-content">Menú</h2>
+          </div>
+
+          {/* Links con mejor espaciado y diseño */}
+          <nav class="flex-1 px-6 py-8">
+            <ul class="space-y-2">
+              {links.map((l) => (
+                <li>
+                  <a
+                    href={l.href}
+                    onClick={close}
+                    class="block w-full px-4 py-4 text-xl font-medium text-base-content hover:bg-base-200 hover:text-accent rounded-lg transition-all duration-200 ease-in-out border-2 border-transparent hover:border-accent/20"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Botón reservar mejorado - fijo en la parte inferior */}
+          <div class="p-6 border-t border-base-200 bg-base-50/50">
+            <a
+              href="#book"
+              class="btn btn-accent btn-lg w-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              onClick={close}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              Reservar Hora
+            </a>
+          </div>
         </aside>
       </div>
     </div>
