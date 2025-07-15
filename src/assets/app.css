@@ -4,6 +4,21 @@
 }
 @import "leaflet/dist/leaflet.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Embla Carousel spacing */
+.embla__container {
+  display: flex;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.embla__slide {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 /* +++++ MEJORAS: utilidades de texto +++++ */
 @layer utilities {
   /* Versión mejorada del text-outline - más sutil */

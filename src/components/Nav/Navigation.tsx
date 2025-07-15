@@ -8,10 +8,11 @@ interface NavLink {
 }
 
 const links: NavLink[] = [
-  { href: "#home", label: "Inicio" },
+  { href: "#hero", label: "Inicio" },
   { href: "#services", label: "Servicios" },
-  { href: "#shop", label: "Tienda" },
-  { href: "#contact", label: "Contacto" },
+  { href: "#gallery", label: "Galería" },
+  { href: "#reviews", label: "Reseñas" },
+  { href: "#location", label: "Ubicación" },
 ];
 
 const ResponsiveNavbar: Component<{ children?: any }> = (props) => {
@@ -93,12 +94,12 @@ const ResponsiveNavbar: Component<{ children?: any }> = (props) => {
       </div>
 
       {/* ——— Drawer (mobile) - MEJORADO ——— */}
-      <div class="drawer-side fixed inset-0">
+      <div class="drawer-side fixed inset-0 z-60">
         {/* Overlay */}
         <label for="nav-drawer" class="drawer-overlay"></label>
 
         {/* Panel mejorado */}
-        <aside class="bg-base-100 w-80 h-full flex flex-col shadow-2xl">
+        <aside class="bg-base-100 w-80 h-full flex flex-col shadow-2xl relative z-10">
           {/* Header del drawer */}
           <div class="p-6 border-b border-base-200">
             <h2 class="text-2xl font-bold text-base-content">Menú</h2>

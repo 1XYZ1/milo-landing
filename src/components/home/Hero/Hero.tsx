@@ -55,11 +55,11 @@ const HeroSection: Component<HeroProps> = (props) => {
       )}
 
       {/* Contenido */}
-      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 px-4 md:px-8 max-w-7xl mx-auto py-16 lg:py-24">
+      <div class="relative z-10 flex items-center justify-center min-h-[90vh] lg:grid lg:grid-cols-12 lg:items-center gap-8 lg:gap-12 px-4 md:px-8 max-w-7xl mx-auto py-16 lg:py-24">
         {/* Contenido principal - 7 columnas */}
         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
           <h1
-            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight
+            class="text-5xl sm:text-5xl md:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight
                      text-white
                      drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]
                      [text-shadow:0_2px_8px_rgba(0,0,0,0.5),0_0_20px_rgba(0,0,0,0.3)]"
@@ -73,9 +73,11 @@ const HeroSection: Component<HeroProps> = (props) => {
           </h1>
           <p
             class="text-lg sm:text-xl lg:text-2xl font-medium text-white/90
-           drop-shadow-legible max-w-prose mx-auto lg:mx-0"
+            max-w-prose mx-auto lg:mx-0
+           [text-shadow:0_2px_10px_rgba(0,0,0,0.9),0_0_20px_rgba(0,0,0,0.7)]"
           >
             Peluquería profesional para mascotas.
+            <br />
             <span class="text-accent font-semibold">
               Reserva fácil, resultados increíbles
             </span>
@@ -121,10 +123,10 @@ const HeroSection: Component<HeroProps> = (props) => {
                     class="w-6 h-6 group-hover:scale-110 transition-transform brightness-0 invert"
                   />
                   <div class="text-center">
-                    <span class="text-xs font-bold block text-white">
+                    <span class="text-md font-bold block text-white">
                       {benefit.label}
                     </span>
-                    <span class="text-[10px] text-white/90 hidden sm:block">
+                    <span class="text-[12px] text-white/90 hidden sm:block">
                       {benefit.desc}
                     </span>
                   </div>
@@ -138,19 +140,19 @@ const HeroSection: Component<HeroProps> = (props) => {
             <a
               href="#book"
               class="btn bg-emerald-600 hover:bg-emerald-700 text-white font-semibold
-                     px-8 py-4 rounded-lg transition-all duration-200
+                     text-lg px-8 py-4 lg:px-12 lg:py-6 lg:text-xl rounded-lg transition-all duration-200
                      shadow-[0_6px_20px_rgba(5,150,105,0.4)] hover:shadow-[0_8px_25px_rgba(5,150,105,0.5)]
                      border border-emerald-500/30 hover:scale-[1.02] active:scale-[0.98]
                      focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
             >
-              📅 Reservar Ahora
+              Reservar Ahora
             </a>
 
             {/* CTA Secundario */}
             <a
               href="#services"
               class="btn bg-black/60 hover:bg-black/80 text-white border-2 border-white/60
-                     hover:border-white font-medium px-6 py-4 rounded-lg
+                     hover:border-white font-medium text-lg px-6 py-4 lg:px-10 lg:py-6 lg:text-xl rounded-lg
                      transition-all duration-200 backdrop-blur-sm"
             >
               Ver Servicios
@@ -159,7 +161,7 @@ const HeroSection: Component<HeroProps> = (props) => {
         </div>
 
         {/* Media - 5 columnas */}
-        <figure class="lg:col-span-5 relative w-full">
+        {/* <figure class="lg:col-span-5 relative w-full">
           {props.isVideo ? (
             <video
               class="w-full object-cover aspect-video rounded-lg"
@@ -178,7 +180,7 @@ const HeroSection: Component<HeroProps> = (props) => {
               loading="lazy"
             />
           )}
-        </figure>
+        </figure> */}
       </div>
     </section>
   );

@@ -1,5 +1,9 @@
 ---
 import ServicesSection, { type Service } from "./Services.tsx";
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
 
 const services: Service[] = [
   {
@@ -31,5 +35,6 @@ const services: Service[] = [
   },
 ];
 ---
-
-<ServicesSection services={services}  client:load/>
+<div id={id}>
+  <ServicesSection services={services}  client:load/>
+</div>

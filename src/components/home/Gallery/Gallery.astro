@@ -3,51 +3,86 @@ import GallerySection, { type GalleryItem } from "./Gallery.tsx";
 
 const gallery: GalleryItem[] = [
   {
+    id: "transformation-1",
     mediaSrc: "/galeria/pet-antes-despues.png",
-    alt: "Antes y después de corte",
+    alt: "Transformación completa de Golden Retriever - antes y después del servicio de peluquería",
     caption: "Transformación Premium",
-    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia.",
+    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia para un pelaje brillante y saludable.",
     link: "/galeria/peluqueria-transformacion",
   },
   {
+    id: "checkup-1",
     mediaSrc: "/media/vet.mp4",
     isVideo: true,
-    alt: "Chequéo clínico",
-    caption: "Chequéo Preventivo",
-    description: "Detección temprana con ecógrafo portátil y análisis de sangre exprés.",
+    alt: "Chequeo veterinario preventivo con ecógrafo portátil",
+    caption: "Chequeo Preventivo Completo",
+    description: "Detección temprana de problemas de salud con ecógrafo portátil y análisis de sangre exprés para tu tranquilidad.",
     link: "/galeria/chequeo-preventivo",
   },
   {
+    id: "transformation-2",
     mediaSrc: "/galeria/pet-antes-despues.png",
-    alt: "Antes y después de corte",
-    caption: "Transformación Premium",
-    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia.",
-    link: "/galeria/peluqueria-transformacion",
+    alt: "Servicio de peluquería especializada para razas de pelo largo",
+    caption: "Cuidado Especializado",
+    description: "Técnicas específicas para cada raza, respetando las características naturales del pelaje de tu mascota.",
+    link: "/galeria/cuidado-especializado",
   },
   {
+    id: "wellness-1",
     mediaSrc: "/media/vet.mp4",
     isVideo: true,
-    alt: "Chequéo clínico",
-    caption: "Chequéo Preventivo",
-    description: "Detección temprana con ecógrafo portátil y análisis de sangre exprés.",
-    link: "/galeria/chequeo-preventivo",
+    alt: "Sesión de bienestar y relajación para mascotas",
+    caption: "Bienestar Integral",
+    description: "Combinamos peluquería con terapias de relajación para una experiencia completa de bienestar animal.",
+    link: "/galeria/bienestar-integral",
   },
   {
+    id: "grooming-1",
     mediaSrc: "/galeria/pet-antes-despues.png",
-    alt: "Antes y después de corte",
-    caption: "Transformación Premium",
-    description: "Eliminamos nudos, aplicamos shampoo hipoalergénico y finalizamos con ozonoterapia.",
-    link: "/galeria/peluqueria-transformacion",
+    alt: "Proceso de grooming profesional paso a paso",
+    caption: "Grooming Profesional",
+    description: "Proceso completo que incluye corte, lavado, secado y acabados profesionales con productos premium.",
+    link: "/galeria/grooming-profesional",
   },
   {
+    id: "care-1",
     mediaSrc: "/media/vet.mp4",
     isVideo: true,
-    alt: "Chequéo clínico",
-    caption: "Chequéo Preventivo",
-    description: "Detección temprana con ecógrafo portátil y análisis de sangre exprés.",
-    link: "/galeria/chequeo-preventivo",
+    alt: "Atención personalizada y cuidado individual",
+    caption: "Atención Personalizada",
+    description: "Cada mascota recibe un trato único y personalizado, adaptado a su temperamento y necesidades específicas.",
+    link: "/galeria/atencion-personalizada",
   },
-  // …más ítems
+  {
+    id: "transformation-3",
+    mediaSrc: "/galeria/pet-antes-despues.png",
+    alt: "Resultado final de servicio premium de estética canina",
+    caption: "Resultado Premium",
+    description: "El resultado final refleja nuestro compromiso con la excelencia y el cuidado profesional de tu mascota.",
+    link: "/galeria/resultado-premium",
+  },
+  {
+    id: "health-1",
+    mediaSrc: "/media/vet.mp4",
+    isVideo: true,
+    alt: "Monitoreo de salud durante el servicio de grooming",
+    caption: "Monitoreo de Salud",
+    description: "Durante cada sesión monitoreamos la salud general, detectando cualquier anomalía para tu tranquilidad.",
+    link: "/galeria/monitoreo-salud",
+  },
 ];
+
+interface Props {
+  id?: string;
+}
+
+const { id } = Astro.props;
 ---
-    <GallerySection client:visible items={gallery} heading="Resultados que Enamoran" />;
+
+<div id={id}>
+  <GallerySection
+    client:visible
+    items={gallery}
+    heading="Resultados que Enamoran"
+  />
+</div>

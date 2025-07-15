@@ -1,14 +1,19 @@
 ---
 import HeroSection from './Hero.tsx';
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
 ---
-
-<HeroSection
+<div id={id}>
+  <HeroSection
   title="¡Haz que tu mascota luzca increíble!"
   subtitle="Reserva tu sesión de peluquería canina con un solo clic."
-  mediaSrc="/media/pet-grooming.mp4"
-  mediaSrc2="/media/bulldog-clean.mp4"
+  mediaSrc="/media/pet-grooming-comprimido.mp4"
+  mediaSrc2="/media/bulldog-clean-comprimido.mp4"
   isVideo
   primaryCta={{ label: "Reservar ahora", href: "#book" }}
   secondaryCta={{ label: "Ver servicios", href: "#services" }}
   client:load
 />
+</div>
