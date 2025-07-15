@@ -1,19 +1,74 @@
 ---
-import HeroSection from './Hero.tsx';
+// Hero.astro - Hero del home usando el componente reutilizable
+import SharedHero from '../../shared/Hero.astro';
+
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
+
+// Datos específicos para el home
+const heroData = {
+  id: id,
+  title: {
+    main: "Haz que tu mascota",
+    highlight: "brille como nunca"
+  },
+  subtitle: `Peluquería profesional para mascotas con
+    <span class="text-accent font-semibold">resultados increíbles</span>.
+    <br class="hidden sm:block">
+    Reserva fácil, atención personalizada.`,
+  video: {
+    src: "/media/pet-grooming-comprimido.mp4",
+    poster: "/media/pet-happy.png"
+  },
+  buttons: [
+    {
+      text: "Reservar Ahora",
+      href: "/#location",
+      type: "primary" as const,
+      icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+    },
+    {
+      text: "Ver Servicios",
+      href: "#services",
+      type: "outline" as const,
+      icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+    }
+  ],
+  cards: [
+    {
+      title: "Profesionales",
+      subtitle: "Expertos certificados",
+      icon: "/icons/scissors.svg"
+    },
+    {
+      title: "Baño",
+      subtitle: "Agua temperada",
+      icon: "/icons/shower.svg"
+    },
+    {
+      title: "Sin Estrés",
+      subtitle: "Ambiente relajado",
+      icon: "/icons/massage.svg"
+    },
+    {
+      title: "Veterinario",
+      subtitle: "Cuidado total",
+      icon: "/icons/medical.svg"
+    }
+  ],
+  scrollTarget: "#services",
+  ariaLabel: "Hero principal con servicios de peluquería canina"
+};
 ---
-<div id={id}>
-  <HeroSection
-  title="¡Haz que tu mascota luzca increíble!"
-  subtitle="Reserva tu sesión de peluquería canina con un solo clic."
-  mediaSrc="/media/pet-grooming-comprimido.mp4"
-  mediaSrc2="/media/bulldog-clean-comprimido.mp4"
-  isVideo
-  primaryCta={{ label: "Reservar ahora", href: "#book" }}
-  secondaryCta={{ label: "Ver servicios", href: "#services" }}
-  client:load
-/>
-</div>
+
+<!-- Skip link para accesibilidad -->
+<a
+  href="#main-content"
+  class="btn btn-sm absolute top-4 left-4 z-50 opacity-0 focus:opacity-100 transition-opacity"
+>
+  Saltar al contenido
+</a>
+
+<SharedHero {...heroData} />

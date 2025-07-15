@@ -8,11 +8,12 @@ interface NavLink {
 }
 
 const links: NavLink[] = [
-  { href: "#hero", label: "Inicio" },
-  { href: "#services", label: "Servicios" },
-  { href: "#gallery", label: "Galería" },
-  { href: "#reviews", label: "Reseñas" },
-  { href: "#location", label: "Ubicación" },
+  { href: "/", label: "Inicio" },
+  { href: "/about", label: "Sobre Nosotros" },
+  { href: "/#services", label: "Servicios" },
+  { href: "/#gallery", label: "Galería" },
+  { href: "/#reviews", label: "Reseñas" },
+  { href: "/#location", label: "Ubicación" },
 ];
 
 const ResponsiveNavbar: Component<{ children?: any }> = (props) => {
@@ -80,7 +81,7 @@ const ResponsiveNavbar: Component<{ children?: any }> = (props) => {
 
             {/* End (CTA) */}
             <div class="navbar-end hidden lg:flex">
-              <a href="#book" class="btn btn-accent btn-sm lg:btn-md">
+              <a href="/#location" class="btn btn-accent btn-sm lg:btn-md">
                 Reservar
               </a>
             </div>
@@ -125,7 +126,7 @@ const ResponsiveNavbar: Component<{ children?: any }> = (props) => {
           {/* Botón reservar mejorado - fijo en la parte inferior */}
           <div class="p-6 border-t border-base-200 bg-base-50/50">
             <a
-              href="#book"
+              href="/#location"
               class="btn btn-accent btn-lg w-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               onClick={close}
             >

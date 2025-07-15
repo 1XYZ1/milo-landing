@@ -1,0 +1,207 @@
+---
+// Hero.astro - Componente Hero reutilizable para todo el sitio
+export interface Props {
+  id?: string;
+  badge?: string;
+  title: {
+    main: string;
+    highlight: string;
+  };
+  subtitle: string;
+  video: {
+    src: string;
+    poster: string;
+  };
+  buttons: Array<{
+    text: string;
+    href: string;
+    type: 'primary' | 'outline';
+    icon: string;
+  }>;
+  cards?: Array<{
+    value?: string;
+    title: string;
+    subtitle?: string;
+    icon?: string;
+  }>;
+  scrollTarget: string;
+  ariaLabel: string;
+}
+
+const {
+  id,
+  badge,
+  title,
+  subtitle,
+  video,
+  buttons,
+  cards,
+  scrollTarget,
+  ariaLabel
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class="hero min-h-screen relative overflow-hidden"
+  aria-label={ariaLabel}
+>
+  <!-- Video de fondo con poster -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover"
+    src={video.src}
+    poster={video.poster}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  ></video>
+
+  <!-- Overlay gradient para mejor legibilidad -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/50"></div>
+
+  <!-- Contenido principal -->
+  <div class="hero-content relative z-10 w-full max-w-7xl mx-auto px-4 py-8">
+    <div class="text-center lg:text-left max-w-5xl">
+
+      <!-- Badge opcional -->
+      {badge && (
+        <div class="badge badge-accent badge-lg mb-6 bg-accent/90 backdrop-blur-sm">
+          {badge}
+        </div>
+      )}
+
+      <!-- Título principal -->
+      <h1 class="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+        <span class="block text-white text-depth">
+          {title.main}
+        </span>
+        <span class="block text-accent font-extrabold mt-2" style="text-shadow: 0 0 20px theme(colors.accent), 0 0 40px theme(colors.accent), 0 2px 4px rgba(0,0,0,0.8);">
+          {title.highlight}
+        </span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 max-w-2xl mx-auto lg:mx-0 text-outline-soft" set:html={subtitle}>
+      </p>
+
+            <!-- Cards dinámicas -->
+      {cards && cards.length > 0 && (
+        <div class={`grid gap-3 sm:gap-4 mb-8 mx-auto lg:mx-0 ${
+          cards.length === 3 ? 'grid-cols-3 max-w-md' :
+          cards.length === 4 ? 'grid-cols-2 sm:grid-cols-4 max-w-2xl' :
+          'grid-cols-2 max-w-md'
+        }`}>
+          {cards.map((card) => (
+            <div class="card bg-black/40 hover:bg-accent/20 transition-all duration-300 border border-white/20 hover:border-accent/50">
+              <div class="card-body p-4 sm:p-6 items-center text-center">
+                {card.icon && (
+                  <img src={card.icon} alt="" class="w-6 h-6 sm:w-8 sm:h-8 brightness-0 invert mb-1">
+                )}
+                {card.value && (
+                  <div class="text-2xl sm:text-3xl font-bold text-accent mb-1">{card.value}</div>
+                )}
+                <h3 class={card.value ? "text-xs sm:text-sm font-medium text-white" : "text-sm sm:text-base font-bold text-white"}>
+                  {card.title}
+                </h3>
+                {card.subtitle && (
+                  <p class="text-xs text-white/80 hidden sm:block">{card.subtitle}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Botones de acción -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        {buttons.map((button) => (
+          <a
+            href={button.href}
+            class={button.type === 'primary'
+              ? "btn btn-accent btn-lg text-lg sm:text-xl px-8 sm:px-12 py-4 shadow-2xl hover:shadow-accent/25 transition-all duration-300 hover:scale-105 active:scale-95"
+              : "btn btn-outline btn-lg border-white hover:border-accent text-white hover:text-accent hover:bg-white/10 text-lg sm:text-xl px-8 sm:px-12 py-4 backdrop-blur-sm"
+            }
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={button.icon}/>
+            </svg>
+            {button.text}
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Indicador de scroll -->
+  <a
+    href={scrollTarget}
+    class="absolute bottom-14 left-1/2 transform -translate-x-1/2 animate-bounce z-10 group hover:scale-110 transition-transform duration-300"
+    aria-label={`Ir a la sección ${scrollTarget.replace('#', '')}`}
+  >
+    <div class="bg-white/10 backdrop-blur-sm rounded-full p-3 group-hover:bg-white/20 transition-colors duration-300">
+      <svg class="w-6 h-6 text-white/70 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<style>
+  /* Animación personalizada para el video */
+  video {
+    animation: subtle-zoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes subtle-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  /* Optimización para móviles */
+  @media (max-width: 768px) {
+    video {
+      animation: none; /* Deshabilitar animaciones en móvil para mejor performance */
+    }
+  }
+
+  /* Hover effects para las cards */
+  .card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Efecto de ripple para los botones */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Text shadow utilities */
+  .text-depth {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.8);
+  }
+
+  .text-outline-soft {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  }
+</style>

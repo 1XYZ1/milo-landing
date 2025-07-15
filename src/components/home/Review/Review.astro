@@ -3,71 +3,85 @@ import ReviewSection, { type Review } from "./Review.tsx";
 
 const reviews: Review[] = [
   {
+    id: "review-1",
     author: "Constanza Sarmiento",
+    title: "Constanza Sarmiento", // Para compatibilidad con CarouselItem
+    description: "Súper recomendable, yo tengo un Pomerania que tiene su carácter, ahí lo respetan y lo tratan con mucho amor, nunca he tenido ni un problema cuando ha vuelto de casa y antes Cody llegaba súper decaído y enfermo, ahora llegas feliz! Gracias por poder confiarles a mi bebé. 🫶🏻",
+    text: "Súper recomendable, yo tengo un Pomerania que tiene su carácter, ahí lo respetan y lo tratan con mucho amor, nunca he tenido ni un problema cuando ha vuelto de casa y antes Cody llegaba súper decaído y enfermo, ahora llegas feliz! Gracias por poder confiarles a mi bebé. 🫶🏻",
     media: [
       {
         src: "/clientes/cliente1.webp",
         alt: "Constanza Sarmiento",
-      },
-      {
-        src: "/clientes/cliente1.webp",
-        alt: "Constanza Sarmiento",
-      },
+        isVideo: false
+      }
     ],
     rating: 5,
     date: "Hace un año",
-    text: "Súper recomendable, yo tengo un Pomerania que tiene su carácter, ahí lo respetan y lo tratan con mucho amor, nunca he tenido ni un problema cuando ha vuelto de casa y antes Cody llegaba súper decaído y enfermo, ahora llegas feliz! Gracias por poder confiarles a mi bebé. 🫶🏻",
-
   },
   {
+    id: "review-2",
     author: "Carlos G.",
-      media: [
+    title: "Carlos G.",
+    description: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+    media: [
       {
-        src: "/avatars/carlos.jpg",
+        src: "/clientes/cliente1.webp", // Usando imagen que existe
         alt: "Carlos G.",
-      },
+        isVideo: false
+      }
     ],
     rating: 5,
     date: "May 2025",
-    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
   },
   {
-    author: "Carlos G.",
-      media: [
+    id: "review-3",
+    author: "María P.",
+    title: "María P.",
+    description: "Excelente atención, mi gato salió muy contento y relajado. El personal es muy profesional y cariñoso con las mascotas.",
+    text: "Excelente atención, mi gato salió muy contento y relajado. El personal es muy profesional y cariñoso con las mascotas.",
+    media: [
       {
-        src: "/avatars/carlos.jpg",
-        alt: "Carlos G.",
-      },
+        src: "/clientes/cliente1.webp", // Usando imagen que existe
+        alt: "María P.",
+        isVideo: false
+      }
     ],
     rating: 5,
-    date: "May 2025",
-    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+    date: "Abril 2025",
   },
   {
-    author: "Carlos G.",
-      media: [
+    id: "review-4",
+    author: "José L.",
+    title: "José L.",
+    description: "Mi perro quedó hermoso después del corte. Muy recomendable, volveré sin duda.",
+    text: "Mi perro quedó hermoso después del corte. Muy recomendable, volveré sin duda.",
+    media: [
       {
-        src: "/avatars/carlos.jpg",
-        alt: "Carlos G.",
-      },
+        src: "/clientes/cliente1.webp", // Usando imagen que existe
+        alt: "José L.",
+        isVideo: false
+      }
     ],
     rating: 5,
-    date: "May 2025",
-    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+    date: "Marzo 2025",
   },
   {
-    author: "Carlos G.",
-      media: [
+    id: "review-5",
+    author: "Ana S.",
+    title: "Ana S.",
+    description: "Servicio excepcional, mi mascota se ve y se siente mucho mejor. El equipo es muy atento y profesional.",
+    text: "Servicio excepcional, mi mascota se ve y se siente mucho mejor. El equipo es muy atento y profesional.",
+    media: [
       {
-        src: "/avatars/carlos.jpg",
-        alt: "Carlos G.",
-      },
+        src: "/clientes/cliente1.webp", // Usando imagen que existe
+        alt: "Ana S.",
+        isVideo: false
+      }
     ],
     rating: 5,
-    date: "May 2025",
-    text: "El veterinario explicó todo con detalle y el servicio fue muy profesional.",
+    date: "Febrero 2025",
   },
-  // ...más reseñas
 ];
 ---
 <ReviewSection
@@ -75,5 +89,5 @@ const reviews: Review[] = [
   totalReviews={315}
   placeUrl="https://g.co/kgs/Bb5YGJM"
   reviews={reviews}
-  client:visible
+  client:load
 />

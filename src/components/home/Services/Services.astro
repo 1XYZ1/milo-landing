@@ -1,40 +1,207 @@
 ---
-import ServicesSection, { type Service } from "./Services.tsx";
+import CTAUrgent from '../../shared/CTAUrgent.astro';
+
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
 
+interface Service {
+  title: string;
+  description: string;
+  slug: string;
+  mediaSrc: string;
+  isVideo?: boolean;
+  icon: string;
+  highlights: string[];
+  price?: string;
+}
+
 const services: Service[] = [
   {
     title: "Peluquería",
-    description: "Cortes higiénicos, baño con productos hipoalergénicos y estilizado.",
+    description: "Cortes higiénicos, baño con productos hipoalergénicos y estilizado profesional para que tu mascota luzca radiante.",
     slug: "/servicios/peluqueria",
     mediaSrc: "/media/pet-grooming.mp4",
     isVideo: true,
+    icon: "/icons/scissors.svg",
+    highlights: [
+      "Corte personalizado según la raza",
+      "Productos premium hipoalergénicos",
+      "Secado y peinado incluido"
+    ],
+    price: "Desde $25.000"
   },
   {
     title: "Vacunas",
-    description: "Plan de vacunación completo para tu mascota, sin dolor y con registro digital.",
+    description: "Plan de vacunación completo adaptado a tu mascota, sin dolor y con seguimiento digital personalizado.",
     slug: "/servicios/vacunas",
     mediaSrc: "/images/vacuna.png",
+    icon: "/icons/medical.svg",
+    highlights: [
+      "Esquema personalizado por edad",
+      "Registro digital actualizado",
+      "Certificados oficiales"
+    ],
+    price: "Desde $15.000"
   },
   {
     title: "Consulta Veterinaria",
-    description: "Exámenes clínicos integrales con historial médico en línea.",
+    description: "Exámenes clínicos integrales con tecnología avanzada e historial médico digital completo.",
     slug: "/servicios/consulta",
     mediaSrc: "/media/vet.mp4",
     isVideo: true,
+    icon: "/icons/medical.svg",
+    highlights: [
+      "Diagnóstico integral completo",
+      "Historial digital permanente",
+      "Plan de tratamiento personalizado"
+    ],
+    price: "Desde $30.000"
   },
   {
     title: "Laboratorio",
-    description: "Análisis de sangre, orina y pruebas especializadas con resultados rápidos.",
+    description: "Análisis especializados de sangre, orina y estudios avanzados con resultados precisos y rápidos.",
     slug: "/servicios/laboratorio",
     mediaSrc: "/media/lab.mp4",
     isVideo: true,
+    icon: "/icons/medical.svg",
+    highlights: [
+      "Resultados en 24-48 horas",
+      "Equipos de última generación",
+      "Interpretación veterinaria incluida"
+    ],
+    price: "Desde $20.000"
   },
 ];
 ---
-<div id={id}>
-  <ServicesSection services={services}  client:load/>
-</div>
+
+<section
+  id={id}
+  class="py-16 lg:py-20 bg-gradient-to-b from-base-200 to-base-100"
+  aria-labelledby="services-heading"
+>
+  <div class="container mx-auto px-4 lg:px-6 max-w-7xl">
+    <!-- Header Section -->
+    <header class="text-center mb-16 space-y-6">
+
+
+      <h2
+        id="services-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+      >
+        <span class="text-base-content">El cuidado que</span>
+        <br class="sm:hidden">
+        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">tu mascota merece</span>
+      </h2>
+
+      <p class="text-lg sm:text-xl lg:text-2xl text-base-content/70 max-w-4xl mx-auto leading-relaxed">
+        Desde <span class="text-primary font-semibold">peluquería premium</span> hasta
+        <span class="text-secondary font-semibold">atención veterinaria especializada</span>.
+        <br class="hidden sm:block">
+        Porque <span class="text-accent font-semibold">cada mascota es única</span> y merece cuidados excepcionales.
+      </p>
+
+      <!-- Quick stats -->
+      <div class="flex flex-wrap justify-center items-center gap-8 pt-4 text-sm text-base-content/60">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 bg-primary rounded-full"></div>
+          <span>2,000+ familias atendidas</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 bg-secondary rounded-full"></div>
+          <span>Disponibilidad 24/7</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 bg-accent rounded-full"></div>
+          <span>Tecnología de vanguardia</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Services Grid -->
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-12">
+      {services.map((service) => (
+        <article class="group relative bg-base-100 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-base-300 h-full flex flex-col">
+
+          <!-- Media Section -->
+          <figure class="relative overflow-hidden rounded-t-2xl h-48 flex-shrink-0">
+            <!-- Icon Overlay -->
+            <div class="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm rounded-full p-2.5 shadow-lg border border-base-300/50">
+              <img
+                src={service.icon}
+                alt={`Icono de ${service.title}`}
+                class="w-5 h-5 opacity-80"
+                style="filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);"
+              />
+            </div>
+
+            <!-- Price Badge - Más minimalista -->
+            {/* {service.price && (
+              <div class="absolute top-4 right-4 z-10 bg-primary text-white text-sm font-medium px-3 py-1.5 rounded-md shadow-md">
+                {service.price}
+              </div>
+            )} */}
+
+            {service.isVideo ? (
+              <video
+                src={service.mediaSrc}
+                autoplay
+                muted
+                loop
+                playsinline
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <img
+                src={service.mediaSrc}
+                alt={service.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            )}
+          </figure>
+
+          <!-- Content -->
+          <div class="p-5 flex-1 flex flex-col space-y-3">
+                        <!-- Title -->
+            <h3 class="text-xl sm:text-2xl lg:text-2xl font-bold text-base-content group-hover:text-primary transition-colors duration-300">
+              {service.title}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-base sm:text-lg text-base-content/70 leading-relaxed flex-1">
+              {service.description}
+            </p>
+
+            <!-- Highlights -->
+            <div class="space-y-2">
+              {service.highlights.slice(0, 2).map((highlight) => (
+                <div class="flex items-center gap-2 text-base sm:text-lg">
+                  <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                  <span class="text-base-content/80">{highlight}</span>
+                </div>
+              ))}
+            </div>
+
+                        <!-- CTA Button -->
+            <div class="pt-3 mt-auto">
+              <a
+                href={service.slug}
+                class="btn btn-outline btn-primary w-full text-base sm:text-lg hover:btn-primary hover:text-white transition-all duration-300"
+              >
+                Ver Detalles
+                <svg class="w-4 h-4 hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom CTA Section -->
+    <CTAUrgent />
+  </div>
+</section>

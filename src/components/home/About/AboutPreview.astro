@@ -1,0 +1,106 @@
+---
+// AboutPreview.astro - Vista previa minimalista que invita a conocer más
+import CTASection from '../../shared/CTASection.astro';
+
+const { id } = Astro.props;
+---
+
+<section id={id} class="py-16 lg:py-20 bg-gradient-to-br from-base-100 to-base-200">
+  <div class="container mx-auto px-4 max-w-7xl">
+
+    <!-- Header -->
+    <div class="text-center mb-12 lg:mb-16">
+
+      <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-base-content mb-6">
+        Más de <span class="text-primary">15 años</span> de experiencia
+      </h2>
+      <p class="text-lg lg:text-xl text-base-content/70 max-w-3xl mx-auto">
+        Cuidando a las mascotas de nuestra comunidad con amor, profesionalismo y dedicación
+      </p>
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card bg-base-100 shadow-2xl border border-base-300 max-w-6xl mx-auto">
+      <div class="card-body p-6 lg:p-12">
+
+        <!-- Desktop: 2 column layout, Mobile: stacked -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+          <!-- Left Column: Stats and Key Info -->
+          <div class="order-2 lg:order-1">
+            <!-- Stats - Mobile: 2x2 grid, Desktop: 2x2 grid but larger -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div class="stat bg-primary/10 rounded-lg p-4 text-center border border-primary/20">
+                <div class="stat-value text-2xl lg:text-3xl text-primary font-bold">15+</div>
+                <div class="stat-title text-sm lg:text-base">Años de Experiencia</div>
+              </div>
+
+              <div class="stat bg-secondary/10 rounded-lg p-4 text-center border border-secondary/20">
+                <div class="stat-value text-2xl lg:text-3xl text-secondary font-bold">2,000+</div>
+                <div class="stat-title text-sm lg:text-base">Familias Atendidas</div>
+              </div>
+
+              <div class="stat bg-accent/10 rounded-lg p-4 text-center border border-accent/20 col-span-2">
+                <div class="stat-value text-2xl lg:text-3xl text-accent font-bold">15,000+</div>
+                <div class="stat-title text-sm lg:text-base">Servicios Realizados</div>
+              </div>
+            </div>
+
+            <!-- Mission highlight -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 p-6 bg-primary/5 rounded-lg border border-primary/10">
+              <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-8 h-8 lg:w-10 lg:h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                </svg>
+              </div>
+              <div class="text-center sm:text-left">
+                <h4 class="font-bold text-lg lg:text-xl text-base-content mb-1">Nuestro Compromiso</h4>
+                <p class="text-base lg:text-lg text-base-content/80">
+                  Tratamos a cada mascota como parte de nuestra familia
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Description and CTA -->
+          <div class="order-1 lg:order-2">
+            <!-- Description -->
+            <div class="mb-8">
+              <h3 class="text-2xl lg:text-3xl font-bold text-base-content mb-6">
+                Una historia de amor por los animales
+              </h3>
+              <p class="text-lg lg:text-xl text-base-content/80 leading-relaxed mb-6">
+                Fundada en 2009 por la Dra. María González, nos hemos convertido en la clínica
+                de confianza para miles de familias.
+              </p>
+              <p class="text-base lg:text-lg text-base-content/70 leading-relaxed">
+                Nuestro equipo de profesionales apasionados se dedica al bienestar integral
+                de cada mascota, combinando experiencia, tecnología moderna y un trato humano excepcional.
+              </p>
+            </div>
+
+            <!-- Call to Action -->
+            <CTASection
+              title="¿Quieres conocer nuestra historia completa?"
+              description="Descubre a nuestro equipo, nuestros valores y todo lo que nos hace especiales"
+              primaryButton={{
+                text: "Conoce Nuestro Equipo",
+                href: "/about",
+                icon: "team"
+              }}
+              secondaryButton={{
+                text: "Contactar por WhatsApp",
+                href: "https://wa.me/5491234567890?text=Hola,%20me%20gustaría%20conocer%20más%20sobre%20sus%20servicios%20veterinarios",
+                type: "whatsapp"
+              }}
+              alignment="left"
+            />
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,16 +1,24 @@
 ---
 import "../assets/app.css";
 import Nav from "../components/Nav/Navigation.tsx";
+
+export interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = "Miloysusamigos - Clínica Veterinaria y Peluquería Canina", description = "Más de 15 años cuidando a las mascotas de nuestra comunidad con amor, profesionalismo y dedicación. Servicios veterinarios y grooming de alta calidad." } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
 	<body>
 
