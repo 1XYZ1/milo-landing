@@ -84,6 +84,37 @@ const GenericCarousel: Component<GenericCarouselProps<any>> = (props) => {
   const [modalCanScrollPrev, setModalCanScrollPrev] = createSignal(false);
   const [modalCanScrollNext, setModalCanScrollNext] = createSignal(false);
 
+  // Convert slides per view to Embla breakpoints
+  const convertToEmblaBreakpoints = () => {
+    const slides = finalSlidesPerView();
+    const getSlidesCount = (percentage: string) => {
+      if (percentage === "100%") return 1;
+      if (percentage === "50%") return 2;
+      if (percentage === "33.333%") return 3;
+      if (percentage === "25%") return 4;
+      if (percentage === "20%") return 5;
+      return 1;
+    };
+
+    return {
+      "(min-width: 640px)": {
+        align: "start",
+        slidesToScroll: 1,
+        containScroll: "trimSnaps",
+      },
+      "(min-width: 768px)": {
+        align: "start",
+        slidesToScroll: 1,
+        containScroll: "trimSnaps",
+      },
+      "(min-width: 1024px)": {
+        align: "start",
+        slidesToScroll: 1,
+        containScroll: "trimSnaps",
+      },
+    };
+  };
+
   // Default options
   const defaultEmblaOptions: EmblaOptionsType = {
     align: "start",
@@ -93,10 +124,6 @@ const GenericCarousel: Component<GenericCarouselProps<any>> = (props) => {
     containScroll: "trimSnaps",
     slidesToScroll: 1,
     duration: 25,
-    breakpoints: {
-      "(min-width: 640px)": { align: "start" },
-      "(min-width: 1024px)": { align: "start" },
-    },
   };
 
   const defaultAutoplayOptions: AutoplayOptionsType = {
@@ -254,22 +281,10 @@ const GenericCarousel: Component<GenericCarouselProps<any>> = (props) => {
     }
   });
 
-  // Generate responsive slide classes
+  // Generate responsive slide classes - Fixed for multiple slides
   const getSlideClasses = () => {
-    const slides = finalSlidesPerView();
-    const baseClasses = "embla__slide min-w-0";
-
-    const responsiveClasses = [
-      `flex-[0_0_${slides.default}]`,
-      slides.sm && `sm:flex-[0_0_${slides.sm}]`,
-      slides.md && `md:flex-[0_0_${slides.md}]`,
-      slides.lg && `lg:flex-[0_0_${slides.lg}]`,
-      slides.xl && `xl:flex-[0_0_${slides.xl}]`,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    return `${baseClasses} ${responsiveClasses}`;
+    // Use fixed responsive classes that work with Embla
+    return "embla__slide flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pl-4";
   };
 
   // Render card based on style
@@ -458,12 +473,12 @@ const GenericCarousel: Component<GenericCarouselProps<any>> = (props) => {
         role="region"
         aria-label={props.ariaLabel || "Carousel"}
       >
-        <div class="overflow-x-hidden overflow-y-visible -mx-4" ref={emblaRef}>
-          <div class="embla__container">
+        <div class="overflow-hidden" ref={emblaRef}>
+          <div class="embla__container flex -ml-4">
             <For each={props.items}>
               {(item) => (
                 <div class={getSlideClasses()}>
-                  <div class="mx-4 h-full">{renderCard(item)}</div>
+                  <div class="h-full">{renderCard(item)}</div>
                 </div>
               )}
             </For>

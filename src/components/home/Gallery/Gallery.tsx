@@ -44,6 +44,7 @@ const GallerySection: Component<GallerySectionProps> = (props) => {
           slidesPerView={{
             default: "100%",
             sm: "50%",
+            md: "33.333%",
             lg: "33.333%",
           }}
           emblaOptions={{
